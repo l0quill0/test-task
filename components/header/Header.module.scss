@@ -1,0 +1,132 @@
+.container {
+  display: flex;
+  width: 100vw;
+  color: var(--black);
+  padding: 0 100px;
+  padding-top: 40px;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.navigationContainer {
+  display: flex;
+  align-items: center;
+  gap: 47px;
+}
+
+.button {
+  color: var(--erie-black);
+  background-color: transparent;
+  border: none;
+  font-family: var(--font-roboto), sans-serif;
+  font-size: 16px;
+}
+
+.iconButton {
+  width: 31px;
+  height: 31px;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black);
+}
+
+.featureOptionContainer {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.menuContainer {
+  padding-left: 21px;
+  display: flex;
+  gap: 36px;
+}
+
+.menuButton {
+  display: none;
+}
+
+.mobileContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 28 20;
+    background-color: var(--very-light-gray);
+    color: var(--black);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .containerOpen {
+    background-color: var(--black);
+    color: var(--white);
+  }
+
+  .navigationContainer {
+    position: absolute;
+    top: 80px;
+    height: calc(100vh - 80px);
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background-color: var(--black);
+    z-index: 1;
+    align-items: flex-start;
+    gap: 30px;
+    opacity: 0;
+    pointer-events: none;
+    padding: 30 23;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .menuContainer {
+    margin-top: auto;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    padding: 0;
+  }
+  .logo {
+    font-size: 18px;
+  }
+  .menuButton {
+    display: block;
+    height: 24px;
+    width: 24px;
+    border: none;
+    background-color: transparent;
+  }
+  .featureOptionContainer {
+    color: var(--white);
+  }
+  .button {
+    color: var(--white);
+    font-size: 14px;
+  }
+  .iconButton {
+    color: var(--white);
+    border-color: var(--white);
+  }
+  .navOpen {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navClosed {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
