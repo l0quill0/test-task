@@ -1,0 +1,11 @@
+@use "sass:math";
+
+$base-font-size: 16px;
+
+@function to-rem($pixel-value) {
+  @if (math.unit($pixel-value) == "px") {
+    @return math.div($pixel-value, $base-font-size) * 1rem;
+  } @else {
+    @error "The 'to-rem' function expects a pixel value (e.g., 16px).";
+  }
+}

@@ -1,58 +1,98 @@
+@use "@variables" as *;
+@use "@utils" as *;
+
 .container {
+  padding: to-rem(28px) to-rem(20px);
+  background-color: $very-light-gray;
+  color: $black;
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   width: 100vw;
-  color: var(--black);
-  padding: 0 100px;
-  padding-top: 40px;
   justify-content: space-between;
+}
+
+.containerOpen {
+  background-color: $black;
+  color: $white;
 }
 
 .logo {
   font-family: var(--font-inter), sans-serif;
   font-weight: 800;
-  font-size: 24px;
+  font-size: to-rem(18px);
 }
 
 .navigationContainer {
   display: flex;
-  align-items: center;
-  gap: 47px;
+  position: absolute;
+  top: to-rem(80px);
+  height: calc(100vh - to-rem(80px));
+  left: 0;
+  width: 100%;
+  flex-direction: column;
+  background-color: $black;
+  z-index: 1;
+  align-items: flex-start;
+  gap: to-rem(30px);
+  opacity: 0;
+  pointer-events: none;
+  padding: to-rem(30px) to-rem(23px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .button {
-  color: var(--erie-black);
+  color: $white;
+  font-size: to-rem(14px);
   background-color: transparent;
   border: none;
+  border-bottom: to-rem(1px) solid transparent;
   font-family: var(--font-roboto), sans-serif;
-  font-size: 16px;
+  transition: border-color 0.3s ease;
+  &:hover {
+    border-color: currentColor;
+    cursor: pointer;
+  }
 }
 
 .iconButton {
-  width: 31px;
-  height: 31px;
+  width: to-rem(31px);
+  height: to-rem(31px);
+  color: $white;
   background-color: transparent;
-  border: 1px solid black;
+  border: to-rem(1px) solid $white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--black);
 }
 
 .featureOptionContainer {
+  color: $white;
   display: flex;
-  gap: 5px;
+  gap: to-rem(5px);
   align-items: center;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .menuContainer {
-  padding-left: 21px;
   display: flex;
-  gap: 36px;
+  gap: to-rem(36px);
+  margin-top: auto;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
 }
 
 .menuButton {
-  display: none;
+  display: block;
+  height: to-rem(24px);
+  width: to-rem(24px);
+  border: none;
+  background-color: transparent;
 }
 
 .mobileContainer {
@@ -61,72 +101,82 @@
   width: 100%;
 }
 
-@media (max-width: 360px) {
-  .container {
-    padding: 28 20;
-    background-color: var(--very-light-gray);
-    color: var(--black);
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  }
+.cartIcon {
+  padding-right: to-rem(1px);
+}
 
-  .containerOpen {
-    background-color: var(--black);
-    color: var(--white);
+.heavyButton {
+  font-weight: 600;
+}
+
+.navOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navClosed {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: to-rem(40px) to-rem(60px) 0 to-rem(60px);
+    position: relative;
+    z-index: 0;
   }
 
   .navigationContainer {
-    position: absolute;
-    top: 80px;
-    height: calc(100vh - 80px);
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    background-color: var(--black);
-    z-index: 1;
-    align-items: flex-start;
-    gap: 30px;
-    opacity: 0;
-    pointer-events: none;
-    padding: 30 23;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  .menuContainer {
-    margin-top: auto;
     align-items: center;
-    width: 100%;
-    justify-content: center;
-    padding: 0;
-  }
-  .logo {
-    font-size: 18px;
-  }
-  .menuButton {
-    display: block;
-    height: 24px;
-    width: 24px;
-    border: none;
-    background-color: transparent;
-  }
-  .featureOptionContainer {
-    color: var(--white);
-  }
-  .button {
-    color: var(--white);
-    font-size: 14px;
-  }
-  .iconButton {
-    color: var(--white);
-    border-color: var(--white);
-  }
-  .navOpen {
+    gap: to-rem(30px);
     opacity: 1;
-    pointer-events: auto;
+    background-color: transparent;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    top: 0;
+    padding: 0;
+    width: fit-content;
+    pointer-events: all;
   }
 
-  .navClosed {
-    opacity: 0;
-    pointer-events: none;
+  .menuContainer {
+    width: fit-content;
+    padding-left: to-rem(21px);
+    margin: 0;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    font-size: to-rem(24px);
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .featureOptionContainer {
+    color: $black;
+  }
+
+  .button {
+    color: $erie-black;
+    font-size: to-rem(16px);
+  }
+
+  .iconButton {
+    color: $black;
+    border-color: $black;
+  }
+}
+
+@media (min-width: to-rem(1440px)) {
+  .container {
+    padding: to-rem(40px) to-rem(100px) 0 to-rem(100px);
+  }
+
+  .navigationContainer {
+    gap: to-rem(47px);
   }
 }

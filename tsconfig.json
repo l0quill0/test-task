@@ -18,8 +18,12 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@icons/*": ["app/src/assets/*"],
+      "@variables": ["app/variables.scss"],
+      "@utils": ["app/utils.scss"]
     }
   },
   "include": [

@@ -1,34 +1,31 @@
+import { FC } from "react";
 import styles from "./TextInput.module.scss";
+import clsx from "clsx";
 
-export default function TextInput({
-  label,
-  type = "text",
-  isRequired = false,
-  placeholder,
-  styleContainer,
-  styleInput,
-  styleLabel,
-}: {
+interface Props {
   label?: string;
   type?: "text" | "email" | "password";
   isRequired?: boolean;
   placeholder?: string;
-  styleContainer?: React.CSSProperties;
-  styleInput?: React.CSSProperties;
-  styleLabel?: React.CSSProperties;
-}) {
+  className?: string;
+}
+
+export const TextInput: FC<Props> = ({
+  label,
+  type = "text",
+  isRequired = false,
+  placeholder,
+  className,
+}) => {
   return (
-    <div className={styles.inputContainer} style={styleContainer}>
-      <label className={styles.inputLabel} style={styleLabel}>
-        {label}
-      </label>
+    <div className={clsx(styles.inputContainer, className)}>
+      <label className={styles.inputLabel}>{label}</label>
       <input
         className={styles.input}
         type={type}
         required={isRequired}
         placeholder={placeholder}
-        style={styleInput}
       />
     </div>
   );
-}
+};

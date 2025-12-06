@@ -1,3 +1,6 @@
+@use "@variables" as *;
+@use "@utils" as *;
+
 .radioInput {
   position: absolute;
   opacity: 0;
@@ -7,15 +10,15 @@
 .radioLabel {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: to-rem(10px);
   cursor: pointer;
   user-select: none;
 }
 
 .radioTitle {
   font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: to-rem(14px);
+  line-height: to-rem(20px);
 }
 
 .radioIconUnchecked {

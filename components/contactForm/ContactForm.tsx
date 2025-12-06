@@ -1,124 +1,164 @@
 import styles from "./ContactForm.module.scss";
-import Instagram from "../../public/Instagram.svg";
-import Twitter from "../../public/Twitter.svg";
-import Discord from "../../public/Discord.svg";
-import Phone from "../../public/Phone.svg";
-import Mail from "../../public/Mail.svg";
-import Location from "../../public/Location.svg";
-import LetterSendDesktop from "../../public/LetterSendDesktop.svg";
-import LetteSendMobile from "../../public/LetterSendMobile.svg";
-import CirclesDesktop from "../../public/CirclesDesktop.svg";
-import CirclesMobile from "../../public/CirclesMobile.svg";
-import TextInput from "../textInput/TextInput";
-import RadioInput from "../radioInput/RadioInput";
+import Instagram from "@icons/Instagram.svg";
+import Twitter from "@icons/Twitter.svg";
+import Discord from "@icons/Discord.svg";
+import Phone from "@icons/Phone.svg";
+import Mail from "@icons/Mail.svg";
+import Location from "@icons/Location.svg";
+import LetterSendDesktop from "@icons/LetterSendDesktop.svg";
+import LetteSendMobile from "@icons/LetterSendMobile.svg";
+import CirclesDesktop from "@icons/CirclesDesktop.svg";
+import CirclesMobile from "@icons/CirclesMobile.svg";
+import { TextInput } from "../textInput/TextInput";
+import { RadioInput } from "../radioInput/RadioInput";
 
-export default function ContactForm() {
+export const ContactForm = () => {
   return (
     <div className={styles.container}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-          alignItems: "center",
-        }}
-      >
+      <div className={styles.titleWrapper}>
         <span className={styles.titleHeader}>Contact Us</span>
         <span className={styles.titleText}>
           Any question or remarks? Just write a message!
         </span>
       </div>
+
       <div className={styles.contentContainer}>
         <div className={styles.infoContainer}>
           <span className={styles.infoHeader}>Contact information</span>
           <span className={styles.infoText}>
             Say something to start a live chat!
           </span>
+
           <div className={styles.infoFieldContainer}>
             <div className={styles.infoField}>
               <div className={styles.svgWrapper}>
                 <Phone />
               </div>
-              <span>+1012 3456 789</span>
+              <a href="tel:+1012 3456 789">+1012 3456 789</a>
             </div>
             <div className={styles.infoField}>
               <div className={styles.svgWrapper}>
                 <Mail />
               </div>
-              <span>demo@gmail.com</span>
+              <a href="mailto:demo@gmail.com">demo@gmail.com</a>
             </div>
             <div className={styles.infoField}>
               <div className={styles.svgWrapper}>
                 <Location />
               </div>
-              <span>
+              <a
+                target="_blank"
+                href="https://www.google.com/maps/place/132+Dartmouth+St,+Boston,+MA+02116,+%D0%A1%D0%A8%D0%90/@42.3467604,-71.0761182,17z/data=!3m1!4b1!4m6!3m5!1s0x89e37a0d715622b3:0x3b977ca25eeffaaa!8m2!3d42.3467604!4d-71.0761182!16s%2Fg%2F11p106jvz9?entry=ttu&g_ep=EgoyMDI1MTIwMi4wIKXMDSoASAFQAw%3D%3D"
+              >
                 132 Dartmouth Street Boston, Massachusetts 02156 United States
-              </span>
+              </a>
             </div>
           </div>
+
           <div className={styles.footerContainer}>
             <div className={styles.buttonContainer}>
-              <button className={styles.footerButton}>
+              <a
+                target="_blank"
+                href="https://x.com/"
+                className={styles.footerButton}
+              >
                 <Twitter />
-              </button>
-              <button className={styles.footerButton}>
+              </a>
+              <a
+                target="_blank"
+                href="https://www.instagram.com/"
+                className={styles.footerButton}
+              >
                 <Instagram />
-              </button>
-              <button className={styles.footerButton}>
+              </a>
+              <a
+                target="_blank"
+                href="https://discord.com/"
+                className={styles.footerButton}
+              >
                 <Discord />
-              </button>
+              </a>
             </div>
+
             <CirclesDesktop className={styles.circlesDesktop} />
             <CirclesMobile className={styles.circlesMobile} />
           </div>
         </div>
+
         <form className={styles.formContainer}>
           <div className={styles.formRow}>
-            <TextInput label="First Name" isRequired={true} />
-            <TextInput label="Last Name" isRequired={true} />
+            <TextInput
+              label="First Name"
+              isRequired={true}
+              className={styles.fieldInput}
+            />
+            <TextInput
+              label="Last Name"
+              isRequired={true}
+              className={styles.fieldInput}
+            />
           </div>
+
           <div className={styles.formRow}>
-            <TextInput label="Email" type="email" isRequired={true} />
-            <TextInput label="Phone Number" isRequired={true} />
+            <TextInput
+              label="Email"
+              type="email"
+              isRequired={true}
+              className={styles.fieldInput}
+            />
+            <TextInput
+              label="Phone Number"
+              isRequired={true}
+              className={styles.fieldInput}
+            />
           </div>
+
           <div className={styles.radioWrapper}>
             <span className={styles.radioTitle}>Select Subject?</span>
             <div className={styles.radioContainer}>
-              <RadioInput
-                name="subject"
-                id="subject-1"
-                label="General Inquiry"
-              />
-              <RadioInput
-                name="subject"
-                id="subject-2"
-                label="General Inquiry"
-              />
-              <RadioInput
-                name="subject"
-                id="subject-3"
-                label="General Inquiry"
-              />
-              <RadioInput
-                name="subject"
-                id="subject-4"
-                label="General Inquiry"
-              />
+              <div className={styles.radioPair}>
+                <RadioInput
+                  name="subject"
+                  id="subject-1"
+                  label="General Inquiry"
+                />
+                <RadioInput
+                  name="subject"
+                  id="subject-2"
+                  label="General Inquiry"
+                />
+              </div>
+              <div className={styles.radioPair}>
+                <RadioInput
+                  name="subject"
+                  id="subject-3"
+                  label="General Inquiry"
+                />
+                <RadioInput
+                  name="subject"
+                  id="subject-4"
+                  label="General Inquiry"
+                />
+              </div>
             </div>
           </div>
+
           <TextInput
             label="Message"
             isRequired={true}
             placeholder="Write your message.."
-            styleInput={{ width: "100%" }}
+            className={styles.messageInput}
           />
-          <button className={styles.submitButton} type="submit">
-            Send Message
-          </button>
-          <LetterSendDesktop className={styles.letterSendDesktop} />
-          <LetteSendMobile className={styles.letterSendMobile} />
+
+          <div className={styles.submitButtonWrapper}>
+            <button className={styles.submitButton} type="submit">
+              Send Message
+            </button>
+            <LetterSendDesktop className={styles.letterSendDesktop} />
+            <LetteSendMobile className={styles.letterSendMobile} />
+          </div>
         </form>
       </div>
     </div>
   );
-}
+};

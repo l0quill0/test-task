@@ -1,22 +1,19 @@
 "use client";
 
 import styles from "./Header.module.scss";
-import Profile from "../../public/Profile.svg";
-import Cart from "../../public/Cart.svg";
-import Chevron from "../../public/Chevron.svg";
-import Menu from "../../public/Menu.svg";
-import Close from "../../public/Close.svg";
+import Profile from "@icons/Profile.svg";
+import Cart from "@icons/Cart.svg";
+import Chevron from "@icons/Chevron.svg";
+import Menu from "@icons/Menu.svg";
+import Close from "@icons/Close.svg";
 import { useState } from "react";
+import clsx from "clsx";
 
-export default function Header() {
+export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div
-      className={`${styles.container} ${
-        isMenuOpen ? styles.containerOpen : ""
-      } `}
-    >
+    <div className={clsx(styles.container, isMenuOpen && styles.containerOpen)}>
       <div className={styles.mobileContainer}>
         <p className={styles.logo}>Logo here</p>
         <button
@@ -26,31 +23,42 @@ export default function Header() {
           {isMenuOpen ? <Close /> : <Menu />}
         </button>
       </div>
+
       <div
-        className={`${styles.navigationContainer} ${
+        className={clsx(
+          styles.navigationContainer,
           isMenuOpen ? styles.navOpen : styles.navClosed
-        } `}
+        )}
       >
-        <button className={styles.button}>Home</button>
+        <a href="/home" className={styles.button}>
+          Home
+        </a>
         <div className={styles.featureOptionContainer}>
           <button className={styles.button}>Features</button>
           <Chevron />
         </div>
-        <button className={styles.button}>Blog</button>
-        <button className={styles.button}>Shop</button>
-        <button className={styles.button}>About</button>
-        <button className={styles.button} style={{ fontWeight: "600" }}>
+        <a href="/blog" className={styles.button}>
+          Blog
+        </a>
+        <a href="/shop" className={styles.button}>
+          Shop
+        </a>
+        <a href="/about" className={styles.button}>
+          About
+        </a>
+        <a href="/contact" className={clsx(styles.button, styles.heavyButton)}>
           Contact
-        </button>
+        </a>
+
         <div className={styles.menuContainer}>
-          <button className={styles.iconButton}>
+          <a href="/profile" className={styles.iconButton}>
             <Profile />
-          </button>
-          <button className={styles.iconButton} style={{ paddingRight: "1px" }}>
+          </a>
+          <a href="/cart" className={clsx(styles.iconButton, styles.cartIcon)}>
             <Cart />
-          </button>
+          </a>
         </div>
       </div>
     </div>
   );
-}
+};
